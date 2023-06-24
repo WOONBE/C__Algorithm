@@ -12,3 +12,4 @@ add_executable(alphabet chapter3/alphabet.h chapter3/alphabet.cpp chapter3/roomn
 add_executable(roomnumber chapter3/roomnumber.cpp)
 add_executable(linkedlist chapter4/linkedlist.cpp)
 add_executable(editor chapter4/editor.cpp)
+add_executable(stack chapter5/stack.cpp)
