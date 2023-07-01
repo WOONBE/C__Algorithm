@@ -13,6 +13,7 @@ int main(void){
     for (auto c : N) L.push_back(c);
     auto cursor = L.end();
 
+
     int M;
     cin >> M;
 
