@@ -45,6 +45,7 @@ int main(void) {
         else if (q == "front") {
             if(DQ.empty()) cout << -1 << '\n';
             else cout << DQ.front() << '\n';
+
         }
         else { // back
             if(DQ.empty()) cout << -1 << '\n';
