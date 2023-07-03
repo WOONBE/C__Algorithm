@@ -1,6 +1,6 @@
 //
 // Created by 김헌우 on 2023/07/03.
-//1012, 변수를 전역으로 안두는게 중요(런타임 오류남)
+//1012, 변수를 전역으로 안두는게 중요(런타임 오류남), 테스트 케이스가 여러개인게 관건
 #include "bits/stdc++.h"
 using namespace std;
 #define X first
