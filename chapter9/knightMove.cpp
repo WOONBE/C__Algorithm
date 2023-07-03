@@ -17,7 +17,7 @@ queue<pair<int,int>> q;
 
 void bfs(int x,int y){
     //vis[x][y] = true;
-    cin >> xx >> yy ;
+    cin >> xx >> yy ; //원하는 이동 위치
     q.push({x,y});
     while (!q.empty()){
         auto cur = q.front();q.pop();
@@ -42,11 +42,11 @@ int main(void){
     while(t--){
         cin >> n;
         for (int i = 0; i < n; i++) fill(dist[i], dist[i] + n, -1); //거리 구할땐 다 -1로 초기화
-        cin >> x >> y;
+        cin >> x >> y; //나이트의 위치
         dist[x][y] = 0;
         bfs(x,y);
 
-        cout << dist[xx][yy] <<"\n";
+        cout << dist[xx][yy] <<"\n"; //원하는 위치까지의 거리 구하면 끝
     }
 
 
