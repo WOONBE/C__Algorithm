@@ -26,7 +26,6 @@ void bfs(int x,int y){
             int ny = cur.Y + dy[dir];
             if(nx<0 || nx>=n || ny<0 || ny>n) continue;
             if(dist[nx][ny] >=0) continue; //다 -1로 초기화 할거라 다른수면 vis=true랑 같음
-            //vis[nx][ny] = true;
             dist[nx][ny] = dist[cur.X][cur.Y] + 1;
             q.push({nx,ny});
         }

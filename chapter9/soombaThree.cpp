@@ -1,5 +1,6 @@
 
 //기존 숨바꼭질 활용
+//deque말고 기존 queue로 추후에 따로 구현
 
 
 #include <bits/stdc++.h>
