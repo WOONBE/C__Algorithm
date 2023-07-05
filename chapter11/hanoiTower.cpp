@@ -5,7 +5,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void func(int a, int b, int n){
+void func(int a, int b, int n){ //a:시작 b:도착
     if(n == 1){ //하나씩 옮길때
         cout << a << ' ' << b << '\n';
         return;

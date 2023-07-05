@@ -1,6 +1,6 @@
 //
 // Created by 김헌우 on 2023/07/04.
-//
+//이거 계속 값이 추가되서 리턴되는거 고쳐야함
 #include "bits/stdc++.h"
 using namespace std;
 
@@ -54,18 +54,18 @@ int main(void) {
     int k,y,x;
 
     cin >> k;
-    cin >> y >> x;
+    cin >> w >> h;
 
-    for (int i = 0; i < x; i++)
-        for (int j = 0; j < y; j++)
+    for (int i = 0; i < h; i++)
+        for (int j = 0; j < w; j++)
             cin >> board[i][j];
 
     bfs();
 
     int ans = 0x7f7f7f7f;
     for (int i = 0; i < k + 1; i++)
-        if (dist[i][x - 1][y - 1])
-            ans = min(ans, dist[i][x - 1][y - 1]);
+        if (dist[i][h - 1][w - 1])
+            ans = min(ans, dist[i][h - 1][w - 1]);
     if (ans != 0x7f7f7f7f) cout << ans - 1; //시작점을 1로 설정
     else cout << -1;
     return 0;
