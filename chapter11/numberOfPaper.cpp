@@ -20,7 +20,7 @@ bool check(int x, int y, int n) { // x,y, n=길이
 void solve(int x, int y, int z)
 {
     if (check(x, y, z)) {
-        cnt[paper[x][y] + 1] += 1; //idx가 0부터 시작하기때문에 이렇게 할당
+        cnt[paper[x][y] + 1] += 1; //idx가 0부터 시작하기때문에 이렇게 할당(-1을 0함, 0을 1에 이런식으로 배열에 저장
         return;
     }
     int n = z / 3;
