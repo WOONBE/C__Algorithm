@@ -28,7 +28,7 @@ void start(int a){
         if(dur[a] <= 0) num++;
         if(dur[t] <= 0) num++;
         start(a+1);
-        if(dur[a] <= 0) num--;
+        if(dur[a] <= 0) num--; //기존 백트래킹 쪽에서 true를 false로 다시 바꿔주는 느낌으로 초기화
         if(dur[t] <= 0) num--;
         dur[a] += wei[t];
         dur[t] += wei[a];

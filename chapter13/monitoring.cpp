@@ -1,6 +1,6 @@
 //
 // Created by 김헌우 on 2023/06/29.
-//
+//후에 같은 방식으로 코드 재구현 필요, 기본은 bfs 활용
 #include <bits/stdc++.h>
 using namespace std;
 #define X first
@@ -33,7 +33,7 @@ int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin >> n >> m;
-    int mn = 0; // 사각 지대의 최소 크기 (=답)
+    int mn = 0; // 사각 지대의 최소 크기 (=답), m*n값이 아니라 min을 의미
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
             cin >> board1[i][j];
@@ -58,7 +58,7 @@ int main(void) {
             }
             else if(board1[x][y] == 2){
                 upd(x,y,dir);
-                upd(x,y,dir+2); //회전하는 횟수임
+                upd(x,y,dir+2); //회전하는 횟수임, 방향마다 갯수가 증가한다
             }
             else if(board1[x][y] == 3){
                 upd(x,y,dir);
