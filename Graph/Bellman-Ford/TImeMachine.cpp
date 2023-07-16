@@ -36,7 +36,7 @@ int main(){
                 if (dis[j] != INF && dis[next] > dis[j] + d)
                 {
                     dis[next] = dis[j] + d;
-                    if (i == n) cycle = true;
+                    if (i == n) cycle = true; //이때 사이클 여부 파악 가능(n-1번째에 최단거리 갱신, n번째에 음수의 사이클 확인)
                 }
 
             }
