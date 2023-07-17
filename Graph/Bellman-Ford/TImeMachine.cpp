@@ -26,7 +26,7 @@ int main(){
     dis[1] = 0;
 
     for (int i = 1; i <= n; i++)
-        for (int j = 1; j <= n; j++)
+        for (int j = 1; j <= n; j++) //이 밑은 그냥 벨만포드 쓸때 가져와서 쓰는 느낌
         {
             for (int k = 0; k < v[j].size(); k++) //v-1번 돌면 최단거리 갱신함, v번 돌면 음수의 간선 있는지 여부 파악 가능
             {
