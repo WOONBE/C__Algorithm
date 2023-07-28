@@ -6,7 +6,7 @@
 using namespace std;
 
 const int MXN = 1010;
-vector<pair<int, int>> adj[MXN];
+vector<pair<int, int>> adj[MXN]; //pair로 짠다는 생각을 못했음
 int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);

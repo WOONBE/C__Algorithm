@@ -1,0 +1,36 @@
+//
+// Created by 김헌우 on 2023/07/26.
+//기존 방식이랑 동일한데 마지막에 간선 몇개 추가됐는지 여부 구하는데 좀 걸렸음
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, m;
+vector<int> adj[100001];
+bool vis[100001];
+
+void dfs(int cur){
+    if(vis[cur]) return;
+    vis[cur] = true;
+    for(auto nxt : adj[cur])
+        dfs(nxt);
+}
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    cin >> n >> m;
+    for(int i = 0; i < m; i++) {
+        int a, b;
+        cin >> a >> b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    int groupcnt = 0;
+    for(int i = 1; i <= n; i++){
+        if(vis[i]) continue;
+        dfs(i);
+        groupcnt++;
+    }
+    cout << (groupcnt-1) + (m+groupcnt-1)-(n-1); //앞에는 추가, 뒤에는 제거수
+}
