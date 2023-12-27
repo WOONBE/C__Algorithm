@@ -7,19 +7,17 @@ using namespace std;
 vector<int> adj[5001];
 bool vis[5001];
 int ans = 0;
-int cnt = 0;
 
 void dfs() {
     stack<int> s;
     s.push(1);
     while (!s.empty()) {
-        if (cnt == 2) break; // 친구의 친구이니 2단계까지만 들어감
         int cur = s.top();
         s.pop();
-        vis[cur] = 1;
+        vis[cur] = true;
         for (auto nxt: adj[cur]) {
             if (vis[nxt]) continue;
-            vis[nxt] = 1;
+            vis[nxt] = true;
             ans++;
             if (cur == 1) s.push(nxt);
         }
