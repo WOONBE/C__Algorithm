@@ -1,6 +1,6 @@
 //
 // Created by 김헌우 on 2023/07/08.
-//
+// 못푼 문제임(코드 그대로 제출x)
 #include "bits/stdc++.h"
 using namespace std;
 #define X first;
