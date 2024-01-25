@@ -24,7 +24,7 @@ void start(int a) {
 		return;
 	}
 	for (int t = 0; t < n; t++) { // t번째 계란을 내려치고 싶다
-		if (t == a or dur[t] <= 0) continue;
+		if (t == a or dur[t] <= 0) continue; //자기 자신이나, 이미 깨진 계란은 continue
 		dur[a] -= wei[t];
 		dur[t] -= wei[a];
 		if (dur[a] <= 0) num++;
