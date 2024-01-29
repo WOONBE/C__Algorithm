@@ -65,7 +65,7 @@ int main(void) {
 	}
 		for (int rot = 0; rot < 4; rot++) {
 			bool is_paste = false; // 해당 스티커를 붙였는가?
-			for (int x = 0; x <= n - r; x++) {
+			for (int x = 0; x <= n - r; x++) { //시작점 설정 : ex 7에 5짜리 스티커를 붙이려면 시작점이 0,1,2
 				if (is_paste) break;
 				for (int y = 0; y <= m - c; y++) {
 					if (pastable(x, y)) {
