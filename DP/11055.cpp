@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm>
-
+// 99%에서 계속 멈췄었음, 마지막 cout 할때 max_element 범위 재조정하니 통과
 using namespace std;
 int n;
 int arr[1010];
