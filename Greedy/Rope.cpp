@@ -18,11 +18,11 @@ int main()
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	sort(arr, arr + n);
+	sort(arr, arr + n); 
 	int result = 0;
 
 	for (int i = 1; i <= n; i++) {
-		result = max(result, arr[n - i] * i);
+		result = max(result, arr[n - i] * i); //뒤에서부터 선택(가장 큰값부터), 
 	}
 	cout << result << "\n";
 
