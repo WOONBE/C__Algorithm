@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 using namespace std;
+
 //유니온 파인드
 int T, N, M, ans;
 int parent[101];
