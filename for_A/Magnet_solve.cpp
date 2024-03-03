@@ -26,8 +26,10 @@ void input()
 //
 void setDir(int idx)
 {
+
+    //왼쪽 톱니
     int tmp = idx;
-    //
+
     while (true)
     {
         tmp--;
@@ -37,6 +39,8 @@ void setDir(int idx)
             dir[tmp] = -dir[tmp + 1];
         else
             break; }
+
+    // 오른쪽 톱니
     tmp = idx;
     //
     while (true)
@@ -84,7 +88,7 @@ int solve() {
         cin >> idx >> d;
 //dir
         initDir();
-        idx -= 1;
+        idx -= 1; //0번부터 시작하게
         dir[idx] = d;
         setDir(idx);
         for (int j = 0; j < 4; j++)
@@ -101,6 +105,8 @@ int solve() {
     if (wheels[3][0] == 1)
         ans += 8;
     return ans; }
+
+
 int main() {
     // freopen("sample_input.txt", "r", stdin);
     cin >> T;
