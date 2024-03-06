@@ -27,10 +27,14 @@ void tilt(int dir){
             if(board2[i][j] == 0) continue;
             if(tilted[idx] == 0) // 삽입할 위치가 비어있을 경우
                 tilted[idx] = board2[i][j];
-            else if(tilted[idx] == board2[i][j]) // 같은 값을 갖는 블록이 충돌할 경우
-                tilted[idx++] *= 2;
-            else // 다른 값을 갖는 블록이 충돌
-                tilted[++idx] = board2[i][j];
+            else if(tilted[idx] == board2[i][j]){// 같은 값을 갖는 블록이 충돌할 경우
+                tilted[idx] *= 2;
+                idx += 1;
+            }
+            else{
+                idx += 1;
+                tilted[idx] = board2[i][j];
+            }     // 다른 값을 갖는 블록이 충돌
         }
         for(int j = 0; j < n; j++) board2[i][j] = tilted[j]; // board2[i]에 tilted를 덮어씀
     }

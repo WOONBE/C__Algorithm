@@ -11,12 +11,10 @@ int find(int tar){
     if(tar == parent[tar]){
         return tar;
     }
-
     int ret = find(parent[tar]);
     parent[tar] = ret; //
     return ret; //여기 tar로 했다 계속 터짐
 }
-
 void set_union(int a, int b){
     int t1 = find(a);
     int t2 = find(b);
@@ -24,7 +22,6 @@ void set_union(int a, int b){
         return;
     }
     parent[t2] = t1; //다르면 연결
-
 }
 
 void init(){
