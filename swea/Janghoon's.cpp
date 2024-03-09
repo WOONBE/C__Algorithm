@@ -50,8 +50,8 @@ void solve(int cnt, int tot){ //합친 점원, 합계
     }
 }
 int main(){
-//    ios::sync_with_stdio(0);
-//    cin.tie(0);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
     int t;
     cin >> t;
