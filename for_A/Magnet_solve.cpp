@@ -22,7 +22,8 @@ void input()
         {
             cin >> wheels[i][j];
         }
-    } }
+    }
+}
 //
 void setDir(int idx)
 {
@@ -113,7 +114,6 @@ int main() {
     int ans = 0;
     for (int tc = 1; tc <= T; tc++)
     {
-        initDir();
         input();
         ans = solve();
         cout << "#" << tc << ' ' << ans << '\n';

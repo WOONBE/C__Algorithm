@@ -1,6 +1,6 @@
 //
 // Created by 김헌우 on 2024/03/09.
-//
+//중간 경로 구할때 nxt라는 배열 따로 둬서 출력
 #include <iostream>
 #include <vector>
 
