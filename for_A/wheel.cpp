@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-#같은 문제인데 rotate 사용
+//같은 문제인데 rotate 사용
 string board[4];
 
 // x : 번호, dir : 방향, 1번의 회전을 처리하는 함수
