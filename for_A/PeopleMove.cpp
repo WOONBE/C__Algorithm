@@ -52,11 +52,7 @@ void Solve() {
 
 						if (diff >= l && diff <= r) { //국경선 오픈
 							flg = true;
-							if (!vis[cur.X][cur.Y]) {
-								tmp.push_back({ cur.X, cur.Y });
-								sum += board[cur.X][cur.Y];
-								vis[cur.X][cur.Y] = 1;
-							}
+							//여기있던 if문 조건은 이미 위에서 충족
 							if (!vis[nx][ny]) {
 								tmp.push_back({ nx, ny });
 								sum += board[nx][ny];
