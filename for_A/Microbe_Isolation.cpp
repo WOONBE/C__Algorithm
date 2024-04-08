@@ -126,12 +126,12 @@ void Solve() {
 
 int main() {
     cin >> T;
-    for (int tk = 1; tk <= T; tk++) {
+    for (int tc = 1; tc <= T; tc++) {
         Init();
         Input();
         Solve();
 
-        cout << "#" << tk << " " << res << endl;
+        cout << "#" << tc << " " << res << endl;
     }
     return 0;
 }
