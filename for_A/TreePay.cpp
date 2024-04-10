@@ -40,7 +40,7 @@ void spring() {
                     field[r][c] -= trees[r][c][i];
                     temp.push_back(trees[r][c][i] + 1);
                     if ((trees[r][c][i] + 1) % 5 == 0)
-                        five.push({ 0, r, c });
+                        five.push({ 1, r, c });
                 }
             }
 
