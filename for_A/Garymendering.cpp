@@ -11,14 +11,11 @@ int vis[11] = { 0, };
 int connect_city[11];
 
 void Connect(int idx, int check) {//도시 연결
-
     for (int j = 1; j <= N; j++)
         if (map[idx][j] == 1 && vis[j] == check && connect_city[j] == 2) {
             connect_city[j] = check;
             Connect(j, check);
         }
-
-
 }
 
 bool ConnectCheck() {//도시 연결 여부 확인
@@ -60,23 +57,16 @@ void Divide(int num, int total, int a_total) {
 
             if (answer > abs(a_total - b_total))
                 answer = abs(a_total - b_total);
-
         }
         return;
     }
-
     for (int i = 1; i <= N; i++) {
-
         if (vis[i] == 0) {
-
             vis[i] = 1;
             Divide(num + 1, total, a_total + population[i]);
             vis[i] = 0;
-
         }
-
     }
-
 }
 
 int main() {
