@@ -43,8 +43,33 @@ bool isNearSea(int x, int y){
         }
 
     }
-    return false; //이거 리턴 범위 잘못됐었음
+    return false;
 }
+
+//void calc_dist(int x, int y){
+//    memset(dist,0, sizeof(dist));
+//    queue<pair<int,int>> q;
+//    int island_num = island[x][y];
+//    q.push({x,y});
+//    while(!q.empty()){
+//        auto cur = q.front(); q.pop();
+//        int x = cur.first;
+//        int y = cur.second;
+//        for(int i=0; i<4; i++){
+//            int nx = x + dx[i];
+//            int ny = y + dy[i];
+//            if(nx>=0 && ny>=0 && nx < n && ny <n && dist[nx][ny] == 0 && arr[nx][ny] == 0){
+//                dist[nx][ny] = dist[x][y] + 1;
+//                q.push({nx,ny});
+//                if(island[nx][ny] > 0 && island[nx][ny] != island[x][y]){ //섬이면서 다른 섬일때
+//                    ans = min(ans, dist[nx][ny]);
+//                    return;
+//                }
+//            }
+//        }
+//    }
+//}
+
 
 void calc_dist(int x, int y) {
     memset(dist, -1, sizeof(dist));
@@ -60,13 +85,13 @@ void calc_dist(int x, int y) {
         for (int i = 0; i < 4; i++) {
             int nx = cx + dx[i];
             int ny = cy + dy[i];
-            if (nx >= 0 && ny >= 0 && nx < n && ny < n) { //범위 안일때
+            if (nx >= 0 && ny >= 0 && nx < n && ny < n) {
                 if (dist[nx][ny] == -1) { // 방문하지 않은 곳
                     if (arr[nx][ny] == 0) { // 바다인 경우
                         dist[nx][ny] = dist[cx][cy] + 1;
                         q.push({nx, ny});
                     } else if (island[nx][ny] > 0 && island[nx][ny] != island_num) { // 다른 섬인 경우
-                        ans = min(ans, dist[cx][cy]);
+                        ans = min(ans, dist[cx][cy]); //그 전 위치에서의 값이랑 비교
                         return;
                     }
                 }
@@ -74,6 +99,9 @@ void calc_dist(int x, int y) {
         }
     }
 }
+
+
+
 
 int main(){
     ios::sync_with_stdio(0);
@@ -105,5 +133,15 @@ int main(){
     }
 
     cout << ans << "\n";
+
+//
+//    for(int i=0; i<n; i++){
+//        for(int j=0; j<n; j++){
+//            cout << dist[i][j] << ' ';
+//        }
+//        cout << "\n";
+//    }
+
+
 
 }
