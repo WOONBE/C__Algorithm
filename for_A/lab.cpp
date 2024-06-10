@@ -1,6 +1,3 @@
-//
-// Created by 김헌우 on 2024/03/30.
-//
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -14,7 +11,6 @@ using namespace std;
 int board[8][8];
 int n, m, ans;
 int free_cells = 0;
-queue<pair<int, int>> virus;  // 바이러스
 vector<pair<int, int>> frees; // 빈칸
 int dx[4] = { 0, 1, 0, -1 };
 int dy[4] = { 1, 0, -1, 0 };
@@ -32,7 +28,7 @@ int bfs() {
     while (!q.empty()) {
         pair<int, int> cur = q.front();
         q.pop();
-        ret++;
+
         for (int i = 0; i < 4; i++) {
             int nx = cur.X + dx[i];
             int ny = cur.Y + dy[i];
@@ -40,6 +36,8 @@ int bfs() {
             if (board[nx][ny] != 0 || vis[nx][ny]) continue;
             vis[nx][ny] = 1;
             q.push({ nx, ny });
+            ret++;
+
         }
     }
     return ret;
@@ -50,9 +48,9 @@ void dfs(int k, int idx) {
     // 벽 3개 세웠으면 bfs로 확인
     if (k == 3) {
         // 바이러스 퍼진 개수 체크
-        int tmp = bfs();
+        int virus = bfs();
         // 안전영역 = 빈칸 - 바이러스 퍼진 칸, 3을 빼는 이유는 벽을 3개 세웠으므로, 퍼진 크기 = 전체 바이러스 - 원래 바이러스
-        ans = max(free_cells - 3 - tmp + (int)virus.size(), ans);
+        ans = max(free_cells - 3 - virus, ans); //처음부터 빈칸만 카운트하고 갔으므로 전파된 바이러스가 아닌 기존 바이러스는 제외
         return;
     }
     // 각 빈 칸을 벽으로 변경해서 백트래킹 진행
@@ -74,8 +72,6 @@ int main() {
                 free_cells++;
                 frees.push_back({ i, j });
             }
-            else if (board[i][j] == 2) // 바이러스 좌표 저장
-                virus.push({ i, j });
         }
     }
     dfs(0, 0);
