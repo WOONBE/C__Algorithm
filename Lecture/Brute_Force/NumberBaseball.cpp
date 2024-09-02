@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -39,10 +40,12 @@ int main(){
     for(int i=1; i<=9; i++){
         for(int j=0; j<=9; j++){
             for(int k=0; k<=9; k++){
+                int count = 0;
                 if(i == j || j== k || k == i)
                     continue;
 
-                bool possible = true;
+
+
                 for(auto g : v){
                     int guess_num = g.num;
                     int strike = g.strike;
@@ -51,29 +54,31 @@ int main(){
                     int strike_cnt = 0;
                     int ball_cnt = 0;
 
-                    int g1 = guess_num / 100;       // 백의 자리
-                    int g2 = (guess_num / 10) % 10; // 십의 자리
-                    int g3 = guess_num % 10;        // 일의 자리
+                    string str_num = to_string(guess_num);
 
-                    // 스트라이크 계산
-                    if (i == g1) strike_cnt++;
-                    if (j == g2) strike_cnt++;
-                    if (k == g3) strike_cnt++;
-
-                    // 볼 계산
-                    if (i == g2 || i == g3) ball_cnt++;
-                    if (j == g1 || j == g3) ball_cnt++;
-                    if (k == g1 || k == g2) ball_cnt++;
-
-                    // 주어진 스트라이크, 볼과 일치하지 않으면 불가능한 숫자
-                    if (strike_cnt != strike || ball_cnt != ball) {
-                        possible = false;
-                        break;
+                    if(int(str_num[0]) == i){
+                        strike_cnt++;
                     }
-                }
+                    if(int(str_num[1]) == j){
+                        strike_cnt++;
+                    }
+                    if(int(str_num[2]) == k){
+                        strike_cnt++;
+                    }
+                    if(i == int(str_num[1]) || i == int(str_num[2])){
+                        ball_cnt++;
+                    }
+                    if(j == int(str_num[0]) || j == int(str_num[2])){
+                        ball_cnt++;
+                    }
+                    if(k == int(str_num[0]) || k == int(str_num[1])){
+                        ball_cnt++;
+                    }
 
-                if (possible) {
-                    possible_count++;
+                    if(strike == strike_cnt && ball == ball_cnt){
+                        count++;
+                    }
+
                 }
             }
 
@@ -81,7 +86,7 @@ int main(){
             }
         }
 
-    cout << possible_count << "\n";
+//    cout <<  << "\n";
 
     return 0;
 }
