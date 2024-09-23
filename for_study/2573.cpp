@@ -6,7 +6,7 @@
 using namespace std;
 #define First ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
-
+//빙산크기만큼만 반복문 돌게하니까 통과함
 int n,m;
 int dx[4] = {1,0,-1,0};
 int dy[4] = {0,1,0,-1};
@@ -27,6 +27,7 @@ void melting(){
         int cnt = 0; //근처에 0 몇개인지
         int x = ice[i].first;
         int y = ice[i].second;
+        if(arr[x][y] == 0) continue;
         for(int dir=0; dir<4; dir++){
 
             int nx = x + dx[dir];
@@ -47,11 +48,16 @@ void melting(){
         }
     }
     //옮기기
-    for(int i=0; i<n; i++){
-        for(int j=0; j<m; j++){ //여기 값 오류
-            arr[i][j] = tmp[i][j] ;
-        }
+//    for(int i=0; i<n; i++){
+//        for(int j=0; j<m; j++){ //여기 값 오류
+//            arr[i][j] = tmp[i][j] ;
+//        }
+//    }
+    for(int i=0; i<ice.size(); i++){
+        if(arr[ice[i].first][ice[i].second] == 0) continue;
+        arr[ice[i].first][ice[i].second] = tmp[ice[i].first][ice[i].second];
     }
+
 //    for(int i=0; i<n; i++){
 //        for(int j=0; j<m; j++){
 //            cout << arr[i][j] << ' ';
