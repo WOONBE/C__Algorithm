@@ -1,5 +1,5 @@
 //
-// Created by 김헌우 on 2024/09/14.
+//6%에서 시간초과
 //12865
 
 #include <iostream>
@@ -41,7 +41,10 @@ void dfs(int idx, int weight, int value){
     dfs(idx + 1, weight, value);
 
     // 현재 물건을 배낭에 넣는 경우
-    dfs(idx + 1, weight + v[idx][0], value + v[idx][1]);
+    if(weight + v[idx][0] <= k){
+        dfs(idx + 1, weight + v[idx][0], value + v[idx][1]);
+    }
+
 }
 void input(){
     cin >> n >> k;
@@ -50,8 +53,6 @@ void input(){
     for(int i=0; i<n; i++){
         cin >> v[i][0] >> v[i][1];
     }
-
-
 }
 
 int main(){
@@ -60,15 +61,5 @@ int main(){
     dfs(0,0,0);
 
     cout << max_value << "\n";
-
-
-
-
-//    for(int i=0; i<n; i++){
-//        cout << v[i][0] <<' ' <<  v[i][1];
-//    }
-
-
-
 
 }
