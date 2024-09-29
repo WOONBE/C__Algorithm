@@ -10,14 +10,14 @@ using namespace std;
 long long N,H;
 vector<long long> height;
 
-vector<vector<long long>> arr;
+//vector<long long > arr; //1차원으로 변환
 vector<long long> line; //1 ,-1 표시한거 합한거 넣어놓음
 vector<long long> prefix; //line 배열의 누적합 계산
 
 void input(){
     cin >> N >> H;
     height.resize(N,0);
-    arr.resize(N+1, vector<long long>(H+1,0));
+//    arr.resize(N+1, vector<long long>(H+1,0));
     line.resize(H+1);
     prefix.resize(H+1);
     for(long long i=0; i<N; i++){
@@ -33,13 +33,13 @@ int main(){
     for(long long i=0; i<N; i++){
         //밑에서 부터
         if(i%2 == 0){
-            arr[i][0] = 1; //시작점 1
-            arr[i][height[i]] = -1;
+            line[0] += 1; //시작점 1
+            line[height[i]] -= 1;
         }
         //위에서 부터
         else if(i%2 == 1){
             //끝에 -1은 필요없음
-            arr[i][H- height[i]] = 1;
+            line[H- height[i]] += 1;
         }
     }
 //    for(long long i=0; i<N;i++){
@@ -48,12 +48,12 @@ int main(){
 //        }cout << "\n";
 //    }
 
-    for(long long i=0; i<H; i++){
-        line[i] = 0;
-        for(long long j=0; j<N; j++){
-            line[i] += arr[j][i];
-        }
-    }
+//    for(long long i=0; i<H; i++){
+//        line[i] = 0;
+//        for(long long j=0; j<N; j++){
+//            line[i] += arr[j][i];
+//        }
+//    }
 
 //    for(long long i=0; i<=H; i++){
 //        cout << line[i] << ' ';
@@ -69,12 +69,13 @@ int main(){
 //    }
 
     long long min_value = *min_element(prefix.begin(),prefix.begin()+H);
-    long long min_cnt = 0;
-    for(long long i=0; i<H; i++){
-        if(prefix[i] == min_value){
-            min_cnt++;
-        }
-    }
+    long long min_cnt = count(prefix.begin(),prefix.begin()+H,min_value); //end아님(+1해줘서)
+
+//    for(long long i=0; i<H; i++){
+//        if(prefix[i] == min_value){
+//            min_cnt++;
+//        }
+//    }
 
     cout << min_value << ' ' << min_cnt <<"\n";
 
