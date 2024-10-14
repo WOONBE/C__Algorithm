@@ -44,10 +44,10 @@ void dfs(int idx, int cnt,int a, int b, int c, int d, int price){
     }
     //방식은 비슷한데 번호 저장을 위해서 push_back 사용
     for(int i=idx; i<n; i++){
-        if(visited[i]) continue;
-        visited[i] = 1;
-        dfs(i,cnt+1,a + v[i][0], b + v[i][1], c + v[i][2], d + v[i][3], price + v[i][4]);
-        visited[i] = 0;
+        // if(visited[i]) continue;
+        // visited[i] = 1;
+        dfs(i+1,cnt+1,a + v[i][0], b + v[i][1], c + v[i][2], d + v[i][3], price + v[i][4]);
+        // visited[i] = 0;
     }
 }
 

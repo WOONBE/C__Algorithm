@@ -3,6 +3,7 @@
 //2961
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 #define First ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
