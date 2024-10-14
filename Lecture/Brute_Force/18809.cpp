@@ -53,7 +53,7 @@ int bfs(vector<pair<int, int>>& g, vector<pair<int, int>>& r) {
             int ny = now_y + dy[i];
 
             // 범위를 벗어나거나 호수인 경우
-            if (nx < 0 || ny < 0 || nx >= N || ny >= M || arr[nx][ny] == 0)  continue;
+            if (nx < 0 || ny < 0 || nx >= N || ny >= M || arr[nx][ny] == 0) continue;
 
             // 초록색 배양액 확산
             if (now_type == 1) {
