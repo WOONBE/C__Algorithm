@@ -32,7 +32,7 @@ void bfs() {
                 if (nx < 0 || nx >= N || ny < 0 || ny >= M)continue;
                 if (arr[nx][ny] == 0)continue;
                 if (arr[nx][ny] <= 2) {
-                    arr[nx][ny] = arr[x][y];
+                    arr[nx][ny] = arr[x][y]; //3,4로 세팅해놓은걸로 옮김
                     tme[nx][ny] = now;
                     q2.push({ nx,ny });
                     continue;
@@ -54,6 +54,7 @@ void bfs() {
     }
     mx_flower = max(mx_flower, tans);
 }
+
 void dfs(int idx,int g_cnt, int r_cnt) {
     if(idx >= canPlant.size()) {
         if(g_cnt == G && r_cnt == R) {
