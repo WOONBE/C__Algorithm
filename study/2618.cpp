@@ -83,6 +83,7 @@ void print_police(int police1, int police2){
 int main(){
     cin >> N;
     cin >> W;
+    point.push_back({0,0}); //인덱스 오류 해결용
     for(int i=1; i<=W; i++){
         int a,b;
         cin >> a >> b;
