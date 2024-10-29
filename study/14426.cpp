@@ -9,6 +9,61 @@ using namespace std;
 string s[10001];  // 집합 S에 포함된 문자열
 string s2[10001]; // 검사할 문자열
 int N, M;
+//struct Node{
+//    bool valid;
+//    map<int,int> children;
+//    Node(){
+//        valid = false;
+//    }
+//};
+//vector<Node> trie;
+//int init(){
+//    Node x;
+//    trie.push_back(x);
+//    return trie.size() - 1;
+//}
+//bool add(int node,string& s,int idx){
+//    if(idx == s.size()){
+//        trie[node].valid = true;
+//        return true;
+//    }
+//    if(trie[node].valid){
+//        return false;
+//    }
+//    int c = s[idx];
+//    if(trie[node].children[c] == 0){
+//        trie[node].children[c] = init();
+//    }
+//
+//    return add(trie[node].children[c], s, idx+1);
+//}
+//bool search(int node,string& s,int idx){
+//    if(idx == s.size()){
+//        trie[node].valid = true;
+//        return true;
+//    }
+//    if(trie[node].valid){
+//        return false;
+//    }
+//    int c = s[idx];
+//    if(trie[node].children[c] == 0){
+//        trie[node].children[c] = init();
+//    }
+//
+//    return add(trie[node].children[c], s, idx+1);
+//}
+//
+//
+//
+//int main(){
+//    First
+//
+//
+//
+//}
+
+
+
 
 struct Node {
     bool valid; // 현재 노드가 끝나는 문자열 여부
@@ -57,7 +112,7 @@ bool search(int node, string& s, int idx) {
 
     int c = s[idx]; // 현재 문자
     // 자식 노드가 없다면 false
-    if (trie[node].children.count(c) == 0) {
+    if (trie[node].children[c] == 0) {
         return false; // 해당 문자에 대한 자식 노드 없음
     }
 
