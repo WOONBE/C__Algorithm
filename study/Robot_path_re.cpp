@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <queue>
 #include <string>
 #include <cstring>
 
@@ -9,10 +8,13 @@ using namespace std;
 #define First ios::sync_with_stdio(0); cout.tie(0); cin.tie(0);
 
 int H,W;
-char arr[25][25];
-bool visited[25][25];
-int dx[4] = {0,1,0,-1};
-int dy[4] = {1,0,-1,0};
+char arr[27][27];
+bool visited[27][27];
+//방향 반대로 해서 헤맴 : 하 우 상 좌
+
+int dx[4] = {1,0,-1,0};
+int dy[4] = {0,1,0,-1};
+
 
 vector<pair<int,int>> v;
 
@@ -30,12 +32,13 @@ void dfs(int x, int y, int direction, int visit_cnt, string commands){
         }
         return;
     }
-    for(int dir=0; dir<4; dir++){
-        int nxt_dir = (direction + dir) % 4;
+
+    for(int turn=0; turn<4; turn++){
+        int nxt_dir = (direction + turn) % 4;
         string cmd = "A";
-        if(dir == 1) cmd = "LA"; //실수
-        else if(dir == 2) cmd = "LLA";
-        else if(dir == 3) cmd = "RA";
+        if(turn == 1) cmd = "LA"; //실수
+        else if(turn == 2) cmd = "LLA";
+        else if(turn == 3) cmd = "RA";
 
         int nx1 = x + dx[nxt_dir];
         int ny1 = y + dy[nxt_dir];
@@ -66,11 +69,11 @@ int main(){
     for(auto [x,y] : v){
         start_x = x;
         start_y = y;
-        for(int dir=0; dir<4; dir++){
-            start_dir = dir;
+        for(int direction=0; direction<4; direction++){
+            start_dir = direction;
             memset(visited,false,sizeof(visited));
             visited[x][y] = true;
-            dfs(x,y,dir,1,"");
+            dfs(x,y,direction,1,"");
         }
     }
 
@@ -80,7 +83,7 @@ int main(){
     else if (result_dir == 3) startChar = '<';
 
 
-    cout << result_x +1<< " " << result_y+1 << endl;
+    cout << result_x + 1<< " " << result_y+1 << endl;
     cout << startChar << endl;
     cout << short_path << endl;
 
