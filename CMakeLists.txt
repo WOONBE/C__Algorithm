@@ -270,3 +270,5 @@ add_executable(21608 study/21608.cpp)
 add_executable(Shark_elementary_re for_A/Shark_elementary_re.cpp)
 add_executable(Robot_path study/Robot_path.cpp)
 add_executable(Robot_path_re study/Robot_path_re.cpp)
+
+add_executable(Commuter_Bus study/Commuter_Bus.cpp)
