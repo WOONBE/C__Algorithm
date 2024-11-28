@@ -272,3 +272,5 @@ add_executable(Robot_path study/Robot_path.cpp)
 add_executable(Robot_path_re study/Robot_path_re.cpp)
 
 add_executable(Commuter_Bus study/Commuter_Bus.cpp)
+add_executable(car_game study/car_game.cpp)
+add_executable(grade_evaluation study/grade_evaluation.cpp)
