@@ -4,29 +4,30 @@
 
 using namespace std;
 
-#define First ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-#define MX 9987654321
+#define INF 30'000'000 // 무한대 값 설정
 
-int N, M, W;
-vector<tuple<int, int, int>> edges; // (start, end, cost)
+struct Edge {
+    int s, e, t;
+};
 
-// 벨만-포드 알고리즘
-bool bellman_ford(int start) {
-    vector<long long> dist(N + 1, MX);
-    dist[start] = 0;
+bool time_travel(int n, vector<Edge> &edges) {
+    vector<int> dist(n + 1, INF); // 거리 배열 초기화
+    dist[1] = 0; // 시작점 거리 0 설정
 
-    // N-1번 완화
-    for (int i = 0; i < N - 1; i++) {
-        for (auto [start, end, cost] : edges) {
-            if (dist[start] != MX && dist[start] + cost < dist[end]) {
-                dist[end] = dist[start] + cost;
+    // 벨만-포드 알고리즘
+    for (int i = 1; i < n; i++) {
+        for (const auto &edge : edges) {
+            int s = edge.s, e = edge.e, t = edge.t;
+            if (dist[e] > dist[s] + t) {
+                dist[e] = dist[s] + t;
             }
         }
     }
 
-    // 추가 완화를 통해 음수 사이클 확인
-    for (auto [start, end, cost] : edges) {
-        if (dist[start] != MX && dist[start] + cost < dist[end]) {
+    // 음수 사이클 확인
+    for (const auto &edge : edges) {
+        int s = edge.s, e = edge.e, t = edge.t;
+        if (dist[e] > dist[s] + t) {
             return true; // 음수 사이클 존재
         }
     }
@@ -35,31 +36,36 @@ bool bellman_ford(int start) {
 }
 
 int main() {
-    First;
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    int TC;
-    cin >> TC;
+    int T; // 테스트 케이스 수
+    cin >> T;
 
-    while (TC--) {
+    while (T--) {
+        int N, M, W;
         cin >> N >> M >> W;
-        edges.clear();
 
+        vector<Edge> edges;
+
+        // 도로 입력 (양방향)
         for (int i = 0; i < M; i++) {
-            int start, end, cost;
-            cin >> start >> end >> cost;
-//            edges.push_back(make_tuple(1, 2, 3));
-            edges.emplace_back(start, end, cost);
-            edges.emplace_back(end, start, cost); // 도로는 양방향
+            int s, e, t;
+            cin >> s >> e >> t;
+            edges.push_back({s, e, t});
+            edges.push_back({e, s, t});
         }
 
+        // 웜홀 입력 (단방향, 시간 감소)
         for (int i = 0; i < W; i++) {
-            int start, end, cost;
-            cin >> start >> end >> cost;
-            edges.emplace_back(start, end, -cost); // 웜홀은 단방향, 시간 감소
+            int s, e, t;
+            cin >> s >> e >> t;
+            edges.push_back({s, e, -t});
         }
 
-        // 1번 지점부터 시작하여 음수 사이클 확인
-        if (bellman_ford(1)) {
+        // 음수 사이클 여부 판단
+        if (time_travel(N, edges)) {
             cout << "YES\n";
         } else {
             cout << "NO\n";

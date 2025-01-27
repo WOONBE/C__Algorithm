@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-
+//6 411321
 int calculateTotalWeight(vector<int>& boxes) {
     int totalWeight = 0;
     int n = boxes.size();
