@@ -6,6 +6,10 @@ using pll = pair<ll, ll>;
 int main(){
     cin.tie(0); cout.tie(0); ios::sync_with_stdio(false);
     int n, m; cin >> n >> m; n *= 3; m *= 3;
+    if (n > m || m * 3 > n * 7.5) {
+        cout << "NO\n";
+        return 0;
+    }
     if(n == 3 && m == 6) return !(cout << "NO");
     cout << "YES\n";
     for(int i = 1; i < n; i++) cout << i << ' ' << i+1 << '\n';
